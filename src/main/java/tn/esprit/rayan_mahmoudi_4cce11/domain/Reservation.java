@@ -29,4 +29,12 @@ public class Reservation {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false, length = 20)
     private StatutReservation statut;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Vehicule vehicule;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Client client;
+    @OneToOne(mappedBy = "reservation", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Contrat contrat;
+
+
 }
